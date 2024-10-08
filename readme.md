@@ -1,10 +1,20 @@
-# DSM driver for realtek RTL8152/RTL8153/RTL8156 based USB Ethernet adapters
+# DSM driver for realtek RTL8152/RTL8153/RTL8156/RTL8157 based USB Ethernet adapters
 
-This is an RTL8152/RTL8153/RTL8156(2.5Gbps or 1.0Gbps) driver package for Synology NASes.
+This is a Realtek USB ethernet driver package for Synology NASes.
+
+* RTL8152/RTL8153: 1.0Gbps
+* RTL8156: 2.5Gbps
+* RTL8157: 5Gbps
 
 You may also be interested in my other projects:
 * [AQC111U(5Gbps ethernet) driver package for Synology NASes](https://github.com/bb-qq/aqc111)
 * [UASP(USB Attached SCSI Protocol for external storage devices) driver package for Synology NASes](https://github.com/bb-qq/uas)
+
+## ⚠️**WARNING**
+
+It has been confirmed that this driver has been modified and reprinted on other sites.
+
+Since this driver works with root privileges, **DO NOT USE IT OBTAINED FROM OTHER SITES**.
 
 ## Supported NAS platform
 
@@ -15,13 +25,15 @@ You may also be interested in my other projects:
 
 You can download drivers from the [release page](https://github.com/bb-qq/r8152/releases) and determine a proper driver for your model from [knowledge base of Synology](https://www.synology.com/en-global/knowledgebase/DSM/tutorial/Compatibility_Peripherals/What_kind_of_CPU_does_my_NAS_have), 
 
-I would appreciate it if you could report whether it works. If you have any problems, the [Troubleshooting](https://github.com/bb-qq/r8152/wiki/Troubleshooting) page may help.
+I would appreciate it if you could let me know whether it works. If you have any problems, the [Troubleshooting](https://github.com/bb-qq/r8152/wiki/Troubleshooting) page may help.
 
-***NOTE***: I recommend using front ports to connect devices because some users reported stability issues when they use rear ports.
+***NOTE***: I recommend connecting devices using front ports because some users have reported stability issues when using rear ports.
 
 ### Author's environment
 
 The author uses the following environments daily and it has confirmed that these devices work stably.
+
+*Disclaimer*: The following product links are affiliate links. If you purchase them, I might earn a small commission at no extra cost to you.
 
 * NAS
   * DS918+ (apollolake) with 16GB RAM
@@ -36,8 +48,18 @@ The author uses the following environments daily and it has confirmed that these
   * main: [QNAP QSW-2104-2T](https://amzn.to/3Sam3W0) (Broadcom `BCM53161`: x3 2.5Gbe / x2 10Gbe)
   * sub: [keepLINK 5 Port 2.5G Switch](https://amzn.to/41PHpv6) (Realtek `RTL8372`: x5 2.5Gbe / x1 10G SFP+)
     * If you are looking for an affordable 2.5Gbe switch, I recommend products using the RTL837x family, which is a newer generation of chips and consumes less power. Many other products are available from many vendors.
+  * cable: [Ubiquiti Networks UC-PATCH Cat6 Cable](https://amzn.to/3Xyybla)
 
-## Supported RTL8156(2.5Gbps) based devices
+## Supported devices
+
+See the [Compatibility page](https://github.com/bb-qq/r8152/wiki/Compatibility) for the latest information.
+
+* If you have other products not listed and it does not work, please create an issue with the output of lsusb.
+* If you use a product with a Type-C connector, you will need a connector or cable to convert it to Type-A.
+  * For stable device operation, I recommend using a USB 3.2gen2 10Gbps compatible cable.
+  * A 5Gbps cable is sufficient for this driver to work, but a 10Gbps capable cable can be expected to have higher transmission quality.
+
+### RTL8156(2.5Gbps) based devices
 
 **INFO**: Products using RTL8156**BG** have dramatically lower power consumption(up to 64% decrease) and heat generation than those using RTL8156.
 
@@ -57,14 +79,15 @@ The author uses the following environments daily and it has confirmed that these
 * [Plannex USB-LAN2500R](https://amzn.to/2ZISyAb) (RTL8156/Type-A, only in Japan.)
 * [Plannex USB-LAN2500R2](https://amzn.to/47c14GU) (RTL8156BG/Type-A, only in Japan.)
 * [Buffalo LUA-U3-A2G](https://amzn.to/36kGQf9) (RTL8156/Type-A, only in Japan.)
-* biaze KZ13 [link1](https://alexnld.com/product/biaze-kz13-usb-external-2-5g-network-adapter-usb-to-rj45-converter-rj45-network-port-hub-usb-gigabit-wired-network-card-for-macbook-surface-lenovo-asus-computers/) [link2](https://digitalzakka.com/product/biaze-kz13-2-5g-usb-external-network-adapter-rj45-converter-hub-gigabit-wired-network-card/) (Type-A, only in China)
+* biaze KZ13 \[ [link1](https://alexnld.com/product/biaze-kz13-usb-external-2-5g-network-adapter-usb-to-rj45-converter-rj45-network-port-hub-usb-gigabit-wired-network-card-for-macbook-surface-lenovo-asus-computers/) [link2](https://digitalzakka.com/product/biaze-kz13-2-5g-usb-external-network-adapter-rj45-converter-hub-gigabit-wired-network-card/) \] (Type-A, only in China)
 * [ULT-WIIQ USB 2.5G Ethernet Adapter](https://amzn.to/3HfEW3G) (RTL8156B/Type-A, only in Europe?)
 
-See the [Compatibility page](https://github.com/bb-qq/r8152/wiki/Compatibility) for the latest information.
-* If you have other products not listed and it does not work, please create an issue with the output of lsusb.
-* If you are using a product with a Type-C connector, you will need a connector or cable to convert it to Type-A.
-  * For stable device operation, I recommend using a USB 3.2gen2 10Gbps compatible cable.
-  * A 5Gbps cable is sufficient for this driver to work, but a 10Gbps capable cable can be expected to have higher transmission quality.
+### RTL8157(5Gbps) based devices
+
+If you find other products, I would appreciate it if you could let me know.
+
+* WisdPi WP-UT5 \[ [Amazon](https://amzn.to/3TA3RWh) [AliExpress](https://s.click.aliexpress.com/e/_DDQpNWZ) \] (RTL8157/Type-A and C)
+* [WAVLINK/WiNSTARS WS-NWU340G](https://amzn.to/3MVG5QF) (RTL8157/Type-C, report needed)
 
 ## Supported RTL8157(5Gbps) based devices
 * [WisdPi USB 3.2 5Gbps Ethernet Adapter WP-UT5](https://www.amazon.com/dp/B0DF2TTT9H) (RTL8157/Type-C&A TO C)
@@ -82,6 +105,7 @@ See the [Compatibility page](https://github.com/bb-qq/r8152/wiki/Compatibility) 
 3. Choose a driver package downloaded from the [release page](https://github.com/bb-qq/r8152/releases).
 4. [DSM7] The installation will fail the first time. After that, run the following command from the SSH terminal:
    * `sudo install -m 4755 -o root -D /var/packages/r8152/target/r8152/spk_su /opt/sbin/spk_su`
+   * `sudo chmod a+rx /opt /opt/sbin`
 5. [DSM7] Retry installation. 
    * You don't need the above DSM7-specific steps at the next time.
 6. Reboot your NAS.
